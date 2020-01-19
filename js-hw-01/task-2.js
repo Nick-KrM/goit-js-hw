@@ -1,15 +1,10 @@
-'use strict';
-
 const total = 100;
 
-let ordered = prompt('Введите необходимое количество');
+const orderInputRef = document.querySelector('input[class="order"]');
 
-ordered = Number(ordered);
+const buttonRef = document.querySelector('button[class="orderButton"]');
 
-const input = ordered >= 1 && ordered <= total;
-
-if (input) {
-    console.log('Заказ оформлен, с вами свяжется менеджер');
-} else {
-    console.log('На складе недостаточно товаров!');
-}
+buttonRef.addEventListener('click', () => {
+    const order = Number(orderInputRef.value);
+    let message = order >= 1 && order <= total ? console.log('Заказ оформлен, с вами свяжется менеджер') : console.log('На складе недостаточно товаров!');
+});

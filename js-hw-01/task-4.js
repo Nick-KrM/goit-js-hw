@@ -1,25 +1,32 @@
-'use strict';
-
 let credits = 23580;
 
 let message;
 
 const pricePerDroid = 3000;
 
-let droneOrder = prompt('Введите необходимое количество дронов:');
+const droneOrder = document.querySelector('input[class="numberOfDrones"]');
+const buttonRef = document.querySelector('button[class="confirmButton"]');
+const cancelbuttonRef = document.querySelector('button[class="cancelButton"]');
 
-droneOrder = Number(droneOrder);
-
-const totalPrice = (droneOrder * pricePerDroid);
-
-const accountBalance = (credits - totalPrice);
-
-if (droneOrder === 0) {
+cancelbuttonRef.addEventListener('click', () => {
     message = 'Отменено пользователем!';
-} else if (totalPrice > credits) {
-    message = 'Недостаточно средств на счету!';
-} else {
-    message = `Вы купили ${droneOrder} дроидов, на счету осталось ${accountBalance} кредитов.`;
-}
+    console.log(message);
+});
 
-console.log(message);
+buttonRef.addEventListener('click', () => {
+    droneOrder.value = Number(droneOrder.value);
+
+    const totalPrice = (droneOrder.value * pricePerDroid);
+
+    const accountBalance = (credits - totalPrice);
+
+    if (droneOrder.value === 0) {
+        message = 'Отменено пользователем!';
+    } else if (totalPrice > credits) {
+        message = 'Недостаточно средств на счету!';
+    } else {
+        message = `Вы купили ${droneOrder.value} дроидов, на счету осталось ${accountBalance} кредитов.`;
+    }
+
+    console.log(message);
+});

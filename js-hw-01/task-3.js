@@ -1,17 +1,10 @@
-'use strict';
-
 const ADMIN_PASSWORD = 'jqueryismyjam';
-
 let message;
+const inputpass = document.querySelector('input[class="password"]');
+const buttonRef = document.querySelector('button[class="passwordButton"]');
 
-let inputpass = prompt('Введите пароль:');
-
-if (inputpass === null) {
-    message = 'Отменено пользователем!';
-} else if (inputpass === ADMIN_PASSWORD) {
-    message = 'Добро пожаловать!';
-} else {
-    message = 'Доступ запрещен, неверный пароль!';
-}
-
-alert(message);
+buttonRef.addEventListener('click', () => {
+    message = inputpass.value === ADMIN_PASSWORD ? 'Добро пожаловать!' : 'Доступ запрещен, неверный пароль!';
+    alert(message);
+    console.log('Задание-3 выполненно верно!');
+});

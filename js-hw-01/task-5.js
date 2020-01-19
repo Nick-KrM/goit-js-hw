@@ -1,5 +1,3 @@
-'use strict';
-
 let message;
 
 const china = 'китай';
