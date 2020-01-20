@@ -14,18 +14,18 @@ cancelbuttonRef.addEventListener('click', () => {
 });
 
 buttonRef.addEventListener('click', () => {
-    droneOrder.value = Number(droneOrder.value);
+    let droneOrderedValue = Number(droneOrder.value);
 
-    const totalPrice = (droneOrder.value * pricePerDroid);
+    const totalPrice = (droneOrderedValue * pricePerDroid);
 
     const accountBalance = (credits - totalPrice);
 
-    if (droneOrder.value === 0) {
-        message = 'Отменено пользователем!';
+    if (droneOrderedValue === 0) {
+        message = 'Ну нет, так нет!';
     } else if (totalPrice > credits) {
         message = 'Недостаточно средств на счету!';
     } else {
-        message = `Вы купили ${droneOrder.value} дроидов, на счету осталось ${accountBalance} кредитов.`;
+        message = `Вы купили ${droneOrderedValue} дроидов, на счету осталось ${accountBalance} кредитов.`;
     }
 
     console.log(message);
