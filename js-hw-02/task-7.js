@@ -1,5 +1,3 @@
-'use strict';
-
 const logins = ['Mango', 'robotGoogles', 'Poly', 'Aj4x1sBozz', 'qwerty123'];
 let message;
 
@@ -41,3 +39,4 @@ addLogin(logins, 'jqueryisextremelyfast'); // 'Ошибка! Логин долж
 addLogin(logins, 'Ajaxy'); // 'Логин успешно добавлен!'
 addLogin(logins, 'aJax'); // 'Логин успешно добавлен!'
 addLogin(logins, 'ASdsdf'); // 'Логин успешно добавлен!'
+console.log('Ниже альтернативное 6-е задание:');

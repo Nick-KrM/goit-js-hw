@@ -2,17 +2,21 @@
 let input;
 const numbers = [];
 let total = 0;
-let message;
 
-do {
-    input = Number(prompt('Введите число'));
-    if (!isNaN(input)) {
-        numbers.push(input);
-    } else alert((message = 'Было введено не число, попробуйте еще раз'));
-} while (input !== 0);
-for (input of numbers) {
-    total = total + input;
+while (true) {
+    let input = prompt('Введите число');
+    if (input === null) {
+        console.log('Отменено пользователем!');
+        break;
+    }
+    input = Number(input);
+    const notANumber = Number.isNaN(input);
+    if (notANumber) {
+        console.log('Было введено не число, пропускаем текущую итерацию!');
+        continue;
+    }
+    numbers.push(input);
+    total += input;
 }
-
-console.log(numbers);
-alert((message = `Общая сумма чисел равна ${total}.`));
+console.log(`Вводимые числа: ${numbers}.`);
+alert(`Общая сумма чисел равна ${total}.`);

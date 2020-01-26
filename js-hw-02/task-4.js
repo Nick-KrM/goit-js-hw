@@ -1,10 +1,8 @@
-'use strict';
-
 const formatString = function (string) {
-    const arr = string.split('');
-    if (arr.length > 40) {
-        const croppedString = arr.slice(0, 40);
-        const modifiedCroppedString = croppedString.join('') + '...';
+    // const arr = string.split('');
+    if (string.length > 40) {
+        const croppedString = string.slice(0, 40);
+        const modifiedCroppedString = croppedString + '...';
         return modifiedCroppedString;
     } else {
         return string;
