@@ -15,8 +15,13 @@ while (true) {
         console.log('Было введено не число, пропускаем текущую итерацию!');
         continue;
     }
+
     numbers.push(input);
-    total += input;
+
+    for (let i = 0; i < numbers.length; i + 1) {
+        total += input;
+        break;
+    }
 }
-console.log(`Вводимые числа: ${numbers}.`);
+console.log(`Вводимые числа: ${numbers} и общая сумма чисел равна ${total}.`);
 alert(`Общая сумма чисел равна ${total}.`);
