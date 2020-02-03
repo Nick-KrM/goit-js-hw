@@ -6,9 +6,6 @@
 const Transaction = {
     DEPOSIT: 'deposit',
     WITHDRAW: 'withdraw',
-    // id: null,
-    // type: 'type',
-    // amount: 'amount',
 };
 
 /*
