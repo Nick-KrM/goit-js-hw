@@ -17,8 +17,9 @@ const generateId = function () {
 };
 
 const account = {
-    balance: 0,
-    transactions: [],
+
+    transactions: [{ amount: 2000, type: "deposit", id: "_lt983vgn9" },],
+    balance: 2000,
 
     createTransaction(amount, type) {
         const id = generateId();
@@ -34,6 +35,7 @@ const account = {
     deposit(amount) {
         this.transactions.push(this.createTransaction(amount, Transaction['DEPOSIT']));
         this.balance += amount;
+        console.log(`На Ваш счет поступило ${amount}грн.`)
         return this.balance;
     },
 
@@ -50,10 +52,10 @@ const account = {
         if (amount <= this.balance) {
             this.transactions.push(this.createTransaction(amount, Transaction['WITHDRAW']));
             this.balance -= amount;
-
+            console.log(`С Вашего счета будет списано ${amount}грн.`)
             return this.balance;
         } else {
-            console.log(`Ваш запрос ${amount}грн, превышает текущий баланс, который составляет ${this.balance}грн. Недостаточно средств!`)
+            console.log(`Недостаточно средств! Ваш запрос ${amount}грн, превышает текущий баланс, который составляет ${this.balance}грн.`)
         }
     },
 
@@ -68,20 +70,42 @@ const account = {
     /*
      * Метод ищет и возвращает объект транзации по id
      */
-    getTransactionDetails(id) { },
+    getTransactionDetails(id) {
+        for (const obj of this.transactions) {
+            if (obj.id === id) {
+                console.log(`Запрашиваемая транзакция:`);
+                console.log(obj);
+                return this.obj;
+                break;
+            } else { console.log(`Такая транзакция не найдена!`) }
+        }
+    },
 
     /*
      * Метод возвращает количество средств
      * определенного типа транзакции из всей истории транзакций
      */
-    getTransactionTotal(type) { },
+    getTransactionTotal(type) {
+        let total = 0;
+        for (const transactionObject of this.transactions) {
+            if (transactionObject.type === type) {
+                total += transactionObject.amount;
+            }
+        }
+        console.log(`Общая сумма по ${type} составляет ${total}грн.`);
+        return total;
+    },
 };
 
-console.log(account.transactions);
 account.deposit(2000);
 account.deposit(5000);
-account.withdraw(8000);
+account.withdraw(11000);
 account.withdraw(200);
 account.deposit(500);
 console.log(account.transactions);
+account.getBalance();
+account.getTransactionDetails('_lt983vgn9');
+account.getTransactionDetails('_lt983vgn1');
+account.getTransactionTotal('deposit');
+account.getTransactionTotal('withdraw');
 account.getBalance();
