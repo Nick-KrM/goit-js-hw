@@ -54,7 +54,7 @@ class Car {
      * Записывает в свойство isOn значение true
      */
     turnOn() {
-        this.isOn = true
+        this.isOn = true;
     } // работает и без return (заметки начинающего разработчика)
 
     /*
@@ -78,7 +78,7 @@ class Car {
             this.speed += value;
             this.isOn = true;
         } else {
-            console.log(`Нельзя превысить максимальную скорость автомобиля!`)
+            console.log(`Нельзя превысить максимальную скорость автомобиля!`);
         };
     }
 
@@ -93,10 +93,10 @@ class Car {
         } else if (this.speed - value === 0) {
             this.speed -= value;
             this.isOn = false;
-            console.log(`Автомобиль остановился!`)
+            console.log(`Автомобиль остановился!`);
         } else {
-            console.log(`Сначала надо остановиться!`)
-        }; return this.speed
+            console.log(`Сначала надо остановиться!`);
+        }; return this.speed;
     }
 
     /*
@@ -105,9 +105,9 @@ class Car {
      */
     drive(hours) {
         if (this.isOn) {
-            this.distance = this.speed * hours;
+            this.distance += this.speed * hours;
         } else {
-            console.log(`Сперва необходимо повернуть ключ в зажигании...`)
+            console.log(`Сперва необходимо повернуть ключ в зажигании...`);
         }
     }
 }
@@ -136,7 +136,7 @@ mustang.drive(1);
 mustang.turnOff();
 
 Car.getSpecs(mustang);
-// maxSpeed: 200, speed: 0, isOn: false, distance: 70, price: 2000
+// maxSpeed: 200, speed: 0, isOn: false, distance: 250, price: 2000
 
 console.log(mustang.price); // 2000
 mustang.price = 4000;

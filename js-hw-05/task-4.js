@@ -7,25 +7,22 @@ class StringBuilder {
         return this._value;
     }
     set value(newLetter) {
-        this._value = newLetter
+        this._value = newLetter;
     }
 
     append(addStr) {
         const endString = this._value + addStr;
         this._value = endString;
-        return this._value
     }
 
     prepend(addStr) {
         const prependStr = addStr + this._value;
         this._value = prependStr;
-        return this._value
     }
 
     pad(addStr) {
         const finishStr = addStr.concat(this._value, addStr);
         this._value = finishStr;
-        return this._value
     }
 };
 
@@ -55,5 +52,3 @@ console.log(omgBuilder.value); // '(O_o)'
 
 omgBuilder.pad('=');
 console.log(omgBuilder.value); // '=(O_o)='
-
-// Или лучше работать как с массивом?

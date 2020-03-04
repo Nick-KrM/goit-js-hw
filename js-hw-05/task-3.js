@@ -7,16 +7,29 @@ class Storage {
     }
 
     addItem(item) {
-        return this.items.push(item);
+        this.items.push(item);
     }
 
+    // Альтернативный вариант, через перебор циклом:
+    // removeItem(item) {
+    //     for (let i = 0; i < this.items.length; i += 1) {
+    //         if (item === items[i]) {
+    //             this.items.splice(i, 1);
+    //         }
+    //     }
+    // }
+
+    // Вариант с поиском индекса, через метод:
     removeItem(item) {
-        for (let i = 0; i < this.items.length; i += 1) {
-            if (item === items[i]) {
-                this.items.splice(i, 1);
-            }
+        const itemIndex = this.items.indexOf(item);
+        if (itemIndex > -1) {
+            this.items.splice(itemIndex, 1);
+        } else {
+            console.log(`Такой товар - не найден! Ниже доступные товары:`);
         }
     }
+
+
 };
 console.dir(Storage);
 const storage = new Storage([
@@ -34,3 +47,6 @@ console.table(storage.items); // [ "Нанитоиды", "Пролонгер", "
 
 storage.removeItem('Пролонгер');
 console.table(storage.items); // [ "Нанитоиды", "Железные жупи", "Антигравитатор", "Дроид" ]
+
+storage.removeItem('R2D2');
+console.log(storage.items); // [ "Нанитоиды", "Железные жупи", "Антигравитатор", "Дроид" ]
