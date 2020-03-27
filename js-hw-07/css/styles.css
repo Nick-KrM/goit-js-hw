@@ -1,0 +1,39 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+h3 {
+  margin-top: 20px;
+}
+
+#gallery {
+  display: flex;
+  justify-content: space-between;
+}
+
+#gallery li {
+  list-style-type: none;
+}
+
+.gallery--item__images {
+  width: 99%;
+  height: 345px;
+}
+
+#name-output {
+  background-color: aquamarine;
+}
+
+#validation-input {
+  border: 3px solid #bdbdbd;
+}
+
+#validation-input.valid {
+  border-color: #4caf50;
+}
+
+#validation-input.invalid {
+  border-color: #f44336;
+}

@@ -15,3 +15,9 @@ const images = [
         alt: 'Group of Horses Running',
     },
 ];
+
+const galleryList = document
+    .querySelector('#gallery')
+    .insertAdjacentHTML('afterbegin', images.map(elem => `<li class="gallery--item"><img class="gallery--item__images" src='${elem.url}', alt='${elem.alt}'></li>`).join(''));
+
+    // Как же долго я вспоминал способ убарть запятую между li...
