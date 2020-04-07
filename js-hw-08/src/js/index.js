@@ -48,7 +48,7 @@ function imgClick(e) {
 };
 
 closeBtn.addEventListener('click', () => {
-    lightBoxItem.classList.remove('is-open');
+    closeLightBox();
 });
 
 
@@ -56,6 +56,7 @@ closeBtn.addEventListener('click', () => {
 
 function closeLightBox() {
     lightBoxItem.classList.remove('is-open');
+    lightBoxImage.removeAttribute('src');
     window.removeEventListener('keyup', closeModalByKey);
 }
 
