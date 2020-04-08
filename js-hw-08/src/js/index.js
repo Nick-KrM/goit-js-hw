@@ -46,17 +46,19 @@ function imgClick(e) {
     document.body.addEventListener('click', closeModal);
     window.addEventListener('keyup', closeModalByKey);
 };
+// closeBtn.addEventListener('click', () => {
+//     closeLightBox();
+// });
+closeBtn.addEventListener('click', closeLightBox);
 
-closeBtn.addEventListener('click', () => {
-    closeLightBox();
-});
 
 
 //Дополнительно: закрытие по "ESC" и клику не по картинке
 
 function closeLightBox() {
     lightBoxItem.classList.remove('is-open');
-    lightBoxImage.removeAttribute('src');
+    // lightBoxImage.removeAttribute('src');
+    lightBoxImage.src = "";
     window.removeEventListener('keyup', closeModalByKey);
 }
 
