@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+.container {
+  width: 960px;
+  margin: 0 auto;
+}
+
 h3 {
   margin-top: 20px;
 }
@@ -36,4 +41,24 @@ h3 {
 
 #validation-input.invalid {
   border-color: #f44336;
+}
+
+.task8 {
+  margin-bottom: 50px;
+}
+
+#boxes {
+  position: relative;
+}
+
+.action {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-style: solid;
+  border-radius: 50%;
+  border-width: 1px;
+  border-color: gray;
+  margin: 10px;
 }
