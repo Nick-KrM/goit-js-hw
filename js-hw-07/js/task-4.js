@@ -1,17 +1,19 @@
-let counterValue = Number(document.getElementById('value').textContent);
+const itemRef = document.getElementById('value');
+
+let counterValue = Number(itemRef.textContent);
 
 const incrementBtn = document.querySelector('[data-action="increment"]');
 const decrementBtn = document.querySelector('[data-action="decrement"]');
 
 const increment = () => {
     counterValue += 1;
-    document.getElementById('value').textContent = counterValue;
+    itemRef.textContent = counterValue;
     console.log(`Значение счетчика равно: ${counterValue};`);
 };
 
 const decrement = () => {
     counterValue -= 1;
-    document.getElementById('value').textContent = counterValue;
+    itemRef.textContent = counterValue;
     console.log(`Значение счетчика равно: ${counterValue};`);
 };
 

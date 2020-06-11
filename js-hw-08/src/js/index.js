@@ -15,6 +15,7 @@ const imgItems = images.map(e => {
     imgTags.setAttribute('src', e.preview);
     imgTags.setAttribute('data-source', e.original);
     imgTags.setAttribute('alt', e.description);
+    imgTags.setAttribute('id', Date.now()); // Возможно понадобится =\
 
     // Смотрел на галерею и не мог понять, почему они друг на друге сидят...
     liTags.classList.add('gallery__item');
@@ -27,7 +28,7 @@ const imgItems = images.map(e => {
 
     return liTags;
 });
-// console.log(imgItems);
+console.log(imgItems);
 galleryList.append(...imgItems);
 
 
@@ -44,13 +45,11 @@ function imgClick(e) {
 
     // Добавленно при выполнении доп.задачи
     document.body.addEventListener('click', closeModal);
+    window.addEventListener('keydown', scrolling);
     window.addEventListener('keyup', closeModalByKey);
 };
-// closeBtn.addEventListener('click', () => {
-//     closeLightBox();
-// });
-closeBtn.addEventListener('click', closeLightBox);
 
+closeBtn.addEventListener('click', closeLightBox);
 
 
 //Дополнительно: закрытие по "ESC" и клику не по картинке
@@ -60,6 +59,7 @@ function closeLightBox() {
     // lightBoxImage.removeAttribute('src');
     lightBoxImage.src = "";
     window.removeEventListener('keyup', closeModalByKey);
+    window.removeEventListener('keydown', scrolling);
 }
 
 function closeModalByKey(event) {
@@ -75,3 +75,12 @@ function closeModal(event) {
 };
 
 // Дополнительно: пролистывание изо. в открытом модальном окне кнопками "влево" и "вправо" (обязательно сделаю позже)
+
+function scrolling(e) {
+    if (e.code === 'ArrowRight') {
+        console.log(`Click >`);
+    };
+    if (e.code === 'ArrowLeft') {
+        console.log(`Click <`);
+    };
+};

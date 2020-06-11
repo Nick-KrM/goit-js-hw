@@ -9,7 +9,8 @@ const validateInputBlur = function () {
         inputRef.classList.remove('invalid')
         inputRef.classList.add('valid');
     } else {
-        inputRef.classList.add('invalid')
+        inputRef.classList.add('invalid');
+        inputRef.classList.remove('valid');
     };
 };
 
