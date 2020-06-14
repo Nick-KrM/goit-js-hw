@@ -15,20 +15,17 @@ const imgItems = images.map(e => {
     imgTags.setAttribute('src', e.preview);
     imgTags.setAttribute('data-source', e.original);
     imgTags.setAttribute('alt', e.description);
-    imgTags.setAttribute('id', Date.now()); // Возможно понадобится =\
 
-    // Смотрел на галерею и не мог понять, почему они друг на друге сидят...
     liTags.classList.add('gallery__item');
     aTags.classList.add('gallery__link');
     imgTags.classList.add('gallery__image');
-    // Теперь другое дело! ))
 
     aTags.appendChild(imgTags);
     liTags.appendChild(aTags);
 
     return liTags;
 });
-console.log(imgItems);
+
 galleryList.append(...imgItems);
 
 
@@ -56,7 +53,6 @@ closeBtn.addEventListener('click', closeLightBox);
 
 function closeLightBox() {
     lightBoxItem.classList.remove('is-open');
-    // lightBoxImage.removeAttribute('src');
     lightBoxImage.src = "";
     window.removeEventListener('keyup', closeModalByKey);
     window.removeEventListener('keydown', scrolling);
@@ -74,13 +70,43 @@ function closeModal(event) {
     }
 };
 
-// Дополнительно: пролистывание изо. в открытом модальном окне кнопками "влево" и "вправо" (обязательно сделаю позже)
+// Дополнительно: пролистывание изо. в открытом модальном окне кнопками "влево" и "вправо"
+
+const getCurrentImgPosition = () => {
+    const currentImageSource = lightBoxImage.getAttribute('src');
+    const currentImageIndex = images.indexOf(
+        images.find(({ original }) => original === currentImageSource),
+    );
+
+    return currentImageIndex;
+};
+
+const nextImgSrc = () => {
+    const currentImgIdx = getCurrentImgPosition();
+    const endOfGalleryIdx = images.length - 1;
+    if (currentImgIdx === endOfGalleryIdx) {
+        return images[0].original;
+    }
+    return images[currentImgIdx + 1].original;
+};
+
+const prevImgSrc = () => {
+    const currentImgIdx = getCurrentImgPosition();
+    const endOfGalleryIdx = images.length - 1;
+    if (currentImgIdx === 0) {
+        return images[endOfGalleryIdx].original;
+    }
+    return images[currentImgIdx - 1].original;
+};
 
 function scrolling(e) {
     if (e.code === 'ArrowRight') {
-        console.log(`Click >`);
+        lightBoxImage.setAttribute('src', `${nextImgSrc()}`);
     };
+
     if (e.code === 'ArrowLeft') {
-        console.log(`Click <`);
+        lightBoxImage.setAttribute('src', `${prevImgSrc()}`);
     };
 };
+
+//
