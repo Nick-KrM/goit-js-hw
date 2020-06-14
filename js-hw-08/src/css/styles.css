@@ -131,6 +131,44 @@ body {
   background-repeat: no-repeat;
 }
 
+.lightbox__button--next,
+.lightbox__button--prev {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 25%;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 200ms ease-in-out;
+  outline: none;
+  background-position: center;
+  background-size: 70%;
+  background-repeat: no-repeat;
+}
+
+.lightbox__button--prev {
+  top: 50%;
+  right: 84%;
+  background-image: url("../images/icon-back.svg");
+}
+
+.lightbox__button--next {
+  top: 50%;
+  right: 12%;
+  background-image: url("../images/icon-next.svg");
+}
+
+.lightbox__button--prev:hover,
+.lightbox__button--prev:focus,
+.lightbox__button--next:hover,
+.lightbox__button--next:focus,
 .lightbox__button:hover,
 .lightbox__button:focus {
   background-color: rgba(0, 0, 0, 0.5);
