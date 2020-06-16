@@ -5,6 +5,8 @@ const galleryList = document.querySelector('.js-gallery');
 const lightBoxImage = document.querySelector('.lightbox__image');
 const lightBoxItem = document.querySelector('.js-lightbox');
 const closeBtn = document.querySelector('button[data-action="close-lightbox"]');
+const nextImgBtn = document.querySelector('button[data-action="nextImgSrc"]');
+const prevImgBtn = document.querySelector('button[data-action="prevImgSrc"]');
 
 const imgItems = images.map(e => {
     const liTags = document.createElement('li'),
@@ -28,7 +30,6 @@ const imgItems = images.map(e => {
 
 galleryList.append(...imgItems);
 
-
 galleryList.addEventListener('click', imgClick);
 
 function imgClick(e) {
@@ -41,6 +42,7 @@ function imgClick(e) {
     lightBoxImage.src = e.target.getAttribute('data-source');
 
     // Добавленно при выполнении доп.задачи
+    document.body.addEventListener('click', scrollOnBtn);
     document.body.addEventListener('click', closeModal);
     window.addEventListener('keydown', scrolling);
     window.addEventListener('keyup', closeModalByKey);
@@ -49,23 +51,26 @@ function imgClick(e) {
 closeBtn.addEventListener('click', closeLightBox);
 
 
+
 //Дополнительно: закрытие по "ESC" и клику не по картинке
 
 function closeLightBox() {
     lightBoxItem.classList.remove('is-open');
     lightBoxImage.src = "";
+    document.body.removeEventListener('click', closeModal);
+    document.body.removeEventListener('click', scrollOnBtn);
     window.removeEventListener('keyup', closeModalByKey);
     window.removeEventListener('keydown', scrolling);
 }
 
-function closeModalByKey(event) {
-    if (event.code === 'Escape') {
+function closeModalByKey(e) {
+    if (e.code === 'Escape') {
         closeLightBox();
     }
 };
 
-function closeModal(event) {
-    if (event.target.tagName !== 'IMG') {
+function closeModal(e) {
+    if (e.target.tagName !== 'IMG' && e.target !== nextImgBtn && e.target !== prevImgBtn) {
         closeLightBox();
     }
 };
@@ -109,4 +114,13 @@ function scrolling(e) {
     };
 };
 
+function scrollOnBtn(e) {
+    if (e.target === nextImgBtn) {
+        lightBoxImage.setAttribute('src', `${nextImgSrc()}`);
+    };
+
+    if (e.target === prevImgBtn) {
+        lightBoxImage.setAttribute('src', `${prevImgSrc()}`);
+    };
+};
 //
